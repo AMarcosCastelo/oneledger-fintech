@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design tokens do OneLedger (base iBank UI Kit)
+   Roxo #3629B7 + Poppins. Define os utilitários bg-primary-1,
+   text-success, rounded-md (15px) etc. usados no index.html.
+   ============================================================ */
+@theme {
+  --color-primary-1: #3629B7;
+  --color-primary-2: #5655B9;
+  --color-primary-3: #A8A3D7;
+  --color-primary-4: #F2F1F9;
+
+  --color-success: #0F9D58;
+  --color-success-light: #E2F4EA;
+  --color-danger: #FF4267;
+  --color-danger-light: #FFE5EB;
+  --color-warning: #FFAF2A;
+
+  --color-neutral-1: #343434;
+  --color-neutral-2: #898989;
+  --color-neutral-3: #989898;
+  --color-neutral-4: #CACACA;
+  --color-neutral-5: #E0E0E0;
+
+  --color-bg: #FAFAFC;
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+}
+
+/* Aplica a fonte da marca no documento. Fallback do sistema se Poppins não carregar. */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+/* Classe própria: valores monetários com dígitos de largura fixa (tabular). */
+@layer components {
+  .mono {
+    font-variant-numeric: tabular-nums;
+  }
+}

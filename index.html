@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OneLedger — Dashboard</title>
+  <meta name="description" content="OneLedger — dashboard de saldo consolidado e resumo financeiro via Open Finance." />
+
+  <!-- Fonte da marca (Poppins). Se estiver offline, cai no fallback do sistema sem quebrar o layout. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS compilado do Tailwind (arquivo separado, abre offline pelo index.html) -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-bg text-neutral-1 antialiased">
+
+  <div class="flex flex-col lg:flex-row min-h-screen">
+
+    <!-- ============ SIDEBAR / NAV (menu hambúrguer no mobile, fixa no desktop) ============ -->
+    <aside class="bg-primary-1 text-white flex flex-col lg:w-60 lg:shrink-0">
+
+      <!-- Checkbox que abre/fecha o menu no mobile (sem JavaScript) -->
+      <input type="checkbox" id="navToggle" class="peer hidden" />
+
+      <!-- Topo: marca + botão hambúrguer -->
+      <div class="flex items-center justify-between px-4 py-4 lg:px-6 lg:py-5 lg:border-b lg:border-white/10">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl" aria-hidden="true">💰</span>
+          <span class="text-lg font-bold">OneLedger</span>
+        </div>
+        <label for="navToggle" aria-label="Abrir ou fechar o menu"
+               class="lg:hidden grid place-items-center w-10 h-10 rounded-md text-2xl leading-none cursor-pointer hover:bg-white/10">
+          ☰
+        </label>
+      </div>
+
+      <!-- Menu: escondido no mobile, aberto ao marcar o checkbox; sempre visível no desktop -->
+      <nav aria-label="Menu principal"
+           class="hidden peer-checked:flex lg:flex flex-col gap-1 px-2 pb-3 lg:flex-1 lg:p-4">
+        <a href="#" aria-current="page"
+           class="flex items-center gap-3 h-11 px-4 rounded-md bg-white/15 text-sm font-medium">
+          <span aria-hidden="true">🏠</span> Dashboard
+        </a>
+        <a href="#"
+           class="flex items-center gap-3 h-11 px-4 rounded-md text-white/75 hover:bg-white/10 text-sm font-medium">
+          <span aria-hidden="true">🔁</span> Extrato
+        </a>
+        <a href="#"
+           class="flex items-center gap-3 h-11 px-4 rounded-md text-white/75 hover:bg-white/10 text-sm font-medium">
+          <span aria-hidden="true">🏦</span> Contas
+        </a>
+        <a href="#"
+           class="flex items-center gap-3 h-11 px-4 rounded-md text-white/75 hover:bg-white/10 text-sm font-medium">
+          <span aria-hidden="true">⚙️</span> Configurações
+        </a>
+      </nav>
+
+      <!-- Usuário (só no desktop) -->
+      <div class="hidden lg:flex items-center gap-3 p-4 border-t border-white/10">
+        <div class="grid place-items-center w-10 h-10 rounded-full bg-white/20 text-sm font-bold">AC</div>
+        <div class="min-w-0 flex-1">
+          <p class="truncate text-sm font-medium">Antonio Castelo</p>
+          <p class="truncate text-xs text-white/60">RM 571858</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ CONTEÚDO ============ -->
+    <div class="flex flex-col flex-1 min-w-0">
+
+      <!-- Topbar -->
+      <header class="flex items-center justify-between h-14 sm:h-16 px-4 sm:px-8 bg-white border-b border-neutral-5">
+        <p class="hidden sm:block text-sm text-neutral-3">Dashboard</p>
+        <div class="flex items-center gap-3 ml-auto">
+          <button type="button" aria-label="Notificações"
+                  class="grid place-items-center w-10 h-10 rounded-md hover:bg-primary-4">🔔</button>
+          <span class="grid place-items-center w-10 h-10 rounded-full bg-primary-4 text-primary-1 text-sm font-bold">AC</span>
+        </div>
+      </header>
+
+      <!-- Área principal -->
+      <main class="flex-1 w-full max-w-[1760px] mx-auto p-4 sm:p-6">
+
+        <!-- Saudação + período -->
+        <div class="flex flex-wrap items-end justify-between gap-3 mb-5">
+          <div>
+            <h1 class="text-xl sm:text-2xl font-bold">Bom dia, Antonio 👋</h1>
+            <p class="mt-1 text-sm text-neutral-3">Aqui está o resumo da sua vida financeira em Outubro/2026.</p>
+          </div>
+          <button type="button"
+                  class="flex items-center gap-2 h-10 px-3 rounded-md bg-white border border-neutral-5 text-sm font-medium">
+            📅 Outubro/2026 ▾
+          </button>
+        </div>
+
+        <!-- KPIs -->
+        <section aria-label="Resumo financeiro" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+          <article class="rounded-md p-4 bg-primary-1 text-white">
+            <p class="text-xs font-medium text-white/80">Saldo total</p>
+            <p class="mono mt-2 text-2xl font-bold">R$ 28.450,72</p>
+            <p class="mt-1 text-xs text-white/70">5 contas conectadas</p>
+          </article>
+          <article class="rounded-md p-4 bg-white border border-neutral-5">
+            <p class="text-xs font-medium text-neutral-2">Entradas do mês</p>
+            <p class="mono mt-2 text-xl font-bold text-success">+ R$ 12.300,00</p>
+            <p class="mt-1 text-xs text-neutral-3">12 lançamentos</p>
+          </article>
+          <article class="rounded-md p-4 bg-white border border-neutral-5">
+            <p class="text-xs font-medium text-neutral-2">Saídas do mês</p>
+            <p class="mono mt-2 text-xl font-bold text-danger">− R$ 8.420,15</p>
+            <p class="mt-1 text-xs text-neutral-3">47 lançamentos</p>
+          </article>
+          <article class="rounded-md p-4 bg-white border border-neutral-5">
+            <p class="text-xs font-medium text-neutral-2">Saldo do mês</p>
+            <p class="mono mt-2 text-xl font-bold text-success">+ R$ 3.879,85</p>
+            <p class="mt-1 text-xs text-neutral-3">positivo</p>
+          </article>
+        </section>
+
+        <!-- Gráfico + distribuição -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-5">
+
+          <!-- Gráfico de barras (CSS puro, sem JS) -->
+          <div class="lg:col-span-2 rounded-md p-5 bg-white border border-neutral-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <h2 class="text-base font-bold">Entradas vs Saídas (últimos 6 meses)</h2>
+              <div class="flex items-center gap-4 text-xs text-neutral-3">
+                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-success"></span> Entradas</span>
+                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-danger"></span> Saídas</span>
+              </div>
+            </div>
+
+            <div class="flex items-end gap-3 sm:gap-6 h-36">
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="flex items-end justify-center gap-1 w-full h-28">
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-success h-[65%]"></div>
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-danger h-[50%]"></div>
+                </div>
+                <span class="text-xs text-neutral-3">Mai</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="flex items-end justify-center gap-1 w-full h-28">
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-success h-[70%]"></div>
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-danger h-[55%]"></div>
+                </div>
+                <span class="text-xs text-neutral-3">Jun</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="flex items-end justify-center gap-1 w-full h-28">
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-success h-[60%]"></div>
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-danger h-[70%]"></div>
+                </div>
+                <span class="text-xs text-neutral-3">Jul</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="flex items-end justify-center gap-1 w-full h-28">
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-success h-[80%]"></div>
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-danger h-[60%]"></div>
+                </div>
+                <span class="text-xs text-neutral-3">Ago</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="flex items-end justify-center gap-1 w-full h-28">
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-success h-[75%]"></div>
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-danger h-[65%]"></div>
+                </div>
+                <span class="text-xs text-neutral-3">Set</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center gap-2">
+                <div class="flex items-end justify-center gap-1 w-full h-28">
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-success h-[85%]"></div>
+                  <div class="w-5 sm:w-6 rounded-t-sm bg-danger h-[55%]"></div>
+                </div>
+                <span class="text-xs font-semibold text-primary-1">Out</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Distribuição por conta -->
+          <div class="rounded-md p-5 bg-white border border-neutral-5">
+            <h2 class="text-base font-bold mb-3">Onde está o seu dinheiro</h2>
+            <ul class="flex flex-col gap-3">
+              <li class="flex items-center gap-3">
+                <span class="grid place-items-center w-10 h-10 rounded-sm text-white text-sm font-bold shrink-0 bg-[#EC7000]">It</span>
+                <span class="flex-1 min-w-0">
+                  <span class="block text-sm font-medium">Itaú</span>
+                  <span class="block text-xs text-neutral-3">CC 1234</span>
+                </span>
+                <span class="text-right">
+                  <span class="mono block text-sm font-bold">R$ 12.450</span>
+                  <span class="block text-xs text-neutral-3">44%</span>
+                </span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="grid place-items-center w-10 h-10 rounded-sm text-white text-sm font-bold shrink-0 bg-[#8A05BE]">Nu</span>
+                <span class="flex-1 min-w-0">
+                  <span class="block text-sm font-medium">Nubank</span>
+                  <span class="block text-xs text-neutral-3">CC Principal</span>
+                </span>
+                <span class="text-right">
+                  <span class="mono block text-sm font-bold">R$ 8.200</span>
+                  <span class="block text-xs text-neutral-3">29%</span>
+                </span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="grid place-items-center w-10 h-10 rounded-sm text-white text-sm font-bold shrink-0 bg-[#FF7A00]">In</span>
+                <span class="flex-1 min-w-0">
+                  <span class="block text-sm font-medium">Inter</span>
+                  <span class="block text-xs text-neutral-3">CC Empresa</span>
+                </span>
+                <span class="text-right">
+                  <span class="mono block text-sm font-bold">R$ 5.300</span>
+                  <span class="block text-xs text-neutral-3">19%</span>
+                </span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="grid place-items-center w-10 h-10 rounded-sm text-white text-sm font-bold shrink-0 bg-[#1A1A1A]">C6</span>
+                <span class="flex-1 min-w-0">
+                  <span class="block text-sm font-medium">C6 Bank</span>
+                  <span class="block text-xs text-neutral-3">CC 5678</span>
+                </span>
+                <span class="text-right">
+                  <span class="mono block text-sm font-bold">R$ 2.500</span>
+                  <span class="block text-xs text-neutral-3">8%</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Últimas movimentações -->
+        <section class="rounded-md bg-white border border-neutral-5">
+          <div class="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-neutral-5">
+            <h2 class="text-base font-bold">Últimas movimentações</h2>
+            <a href="#" class="text-sm font-semibold text-primary-1 hover:underline">Ver todas →</a>
+          </div>
+          <ul class="divide-y divide-neutral-5">
+            <li class="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3">
+              <span class="grid place-items-center w-9 h-9 rounded-sm text-white text-xs font-bold shrink-0 bg-[#EC7000]">It</span>
+              <span class="flex-1 min-w-0">
+                <span class="block text-sm font-medium truncate">Salário FIAP</span>
+                <span class="block text-xs text-neutral-3">27/04/2026</span>
+              </span>
+              <span class="hidden sm:inline-flex text-xs font-semibold text-success bg-success-light px-2 py-1 rounded-sm">Entrada</span>
+              <span class="mono text-sm font-bold text-success text-right shrink-0 w-28 sm:w-32">+ R$ 8.500,00</span>
+            </li>
+            <li class="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3">
+              <span class="grid place-items-center w-9 h-9 rounded-sm text-white text-xs font-bold shrink-0 bg-[#8A05BE]">Nu</span>
+              <span class="flex-1 min-w-0">
+                <span class="block text-sm font-medium truncate">Pão de Açúcar</span>
+                <span class="block text-xs text-neutral-3">26/04/2026</span>
+              </span>
+              <span class="hidden sm:inline-flex text-xs font-semibold text-danger bg-danger-light px-2 py-1 rounded-sm">Saída</span>
+              <span class="mono text-sm font-bold text-danger text-right shrink-0 w-28 sm:w-32">− R$ 423,80</span>
+            </li>
+            <li class="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3">
+              <span class="grid place-items-center w-9 h-9 rounded-sm text-white text-xs font-bold shrink-0 bg-[#FF7A00]">In</span>
+              <span class="flex-1 min-w-0">
+                <span class="block text-sm font-medium truncate">Aluguel</span>
+                <span class="block text-xs text-neutral-3">25/04/2026</span>
+              </span>
+              <span class="hidden sm:inline-flex text-xs font-semibold text-danger bg-danger-light px-2 py-1 rounded-sm">Saída</span>
+              <span class="mono text-sm font-bold text-danger text-right shrink-0 w-28 sm:w-32">− R$ 2.800,00</span>
+            </li>
+            <li class="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3">
+              <span class="grid place-items-center w-9 h-9 rounded-sm text-white text-xs font-bold shrink-0 bg-[#EC7000]">It</span>
+              <span class="flex-1 min-w-0">
+                <span class="block text-sm font-medium truncate">Transferência PIX recebida</span>
+                <span class="block text-xs text-neutral-3">25/04/2026</span>
+              </span>
+              <span class="hidden sm:inline-flex text-xs font-semibold text-success bg-success-light px-2 py-1 rounded-sm">Entrada</span>
+              <span class="mono text-sm font-bold text-success text-right shrink-0 w-28 sm:w-32">+ R$ 1.200,00</span>
+            </li>
+          </ul>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

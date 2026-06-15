@@ -1,0 +1,14 @@
+{
+  "name": "oneledger-fintech",
+  "version": "1.0.0",
+  "description": "Tela de Dashboard da fintech OneLedger (consolidador Open Finance) — HTML + CSS + Tailwind CSS. Atividade FIAP Fase 4.",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./styles.css",
+    "watch": "tailwindcss -i ./src/input.css -o ./styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/cli": "^4.1.0"
+  }
+}
